@@ -17,3 +17,4 @@ headerTitle.textContent="Hello"
 headerTitle.innerHTML="<b><i>Hello</i></b>"
 header.style.borderBottom='solid 3px #000'
 headerTitle.style.color='green'
+console.log(header)
