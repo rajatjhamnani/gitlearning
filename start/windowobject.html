@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-expand">
+        <div class="container" style="background-color: bisque;">
+            <a href="#" class="navbar-brand"><b><i>Sharpener</i></b></a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">careers</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-lg" style="background-color: aquamarine;height:100vh; ">
+        <form action="#" id="feel" onsubmit="onsignup(event)">
+            <div class="alert alert-success" style="text-align:center;"><b>Welcome</b></div>
+            <!-- <div class="card card-inverse card-success text-center" style="width: 500px ; "> -->
+                <h2 class="card-header" style="text-align: center;color: brown;"><b><u>Book a Call</u></b></h2>
+                <p style="font-size: 125%;text-align: center;">Book a call slot and our representative will call you
+                    within one hour of your selected time</p>
+                <div class="form-floating">
+                    <input type="text" id="fname" name="fname" required class="form-control "
+                        placeholder="Write name here" />
+                    <label for="fname" class="form-label">Name</label>
+                </div>
+                <div class="form-floating">
+                    <input type="email" id="emailid" name="emailid" required class="form-control " 
+                        placeholder="write your email">
+                    <label for="emailid" class="form-label">E-mail</label>
+                </div>
+                <div class="form-floating">
+                    <input type="tel" id="phone" name="phone" required class="form-control "
+                        placeholder="enter your Mobile_Number">
+                    <label for="phone" class="form-label">Mobile_Number</label>
+                </div>
+                <label for="time" class="form-label"></label>
+                <div class="input-group">
+                    <input type="time" id="time" name="time" required class="form-control " />
+                    <input type="date" id="time" name="time" required class="form-control " />
+                </div>
+
+
+                <button class="btn btn-outline-danger"><b>Pick your time</b></button>
+            <!-- </div> -->
+        </form>
+        
+        <ul class="items">
+            <li class="item">Item1</li>
+            <li class="item">Item2</li>
+            <li class="item">Item3</li>
+
+        </ul>
+    </div>
+    <script src="main.js"></script>
+
+</body>
+
+</html>

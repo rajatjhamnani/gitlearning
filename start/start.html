@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            background-color:wheat;
+            width: 80vh;
+            height: 90vh;
+            margin-left: 450px;
+            text-align: center;
+            border: 3px solid white;
+
+        }
+        input {
+            text-align:center;
+            font-size: 30px;
+            width: 500px;
+         }
+        label {
+            
+            font-size: 30px;
+        }   
+        button{
+            background-color: rgb(253, 160, 176);
+            width: 500px;
+            padding: 5px;
+        }     
+    
+    </style>
+</head>
+<body style="background-color: skyblue">
+    <form action='#' onsubmit="onsignup(event)">
+        <h1 style="color: rgb(24, 16, 3);">Book a Call </h1><br>
+        <p style="font-size: 150% ; color: rgb(14, 9, 0);">Book a call slot and our representative will call you within one hour of selected time<hr></p><br>
+        <label for="fname">Name</label><br>
+        <input type="text" id="fname" name="fname" placeholder="enter your name" /><br>
+        <label for="mail">E-mail </label><br>
+        <input type="email" id="mail" name="mail" placeholder="enter your email"/><br>
+        <label for="phone">Phone</label><br>
+        <input type="tel" id="phone" name="phone" placeholder="enter your number "/><br>
+        <label for="ctime">Time for call</label><br>
+        <input type="datetime-local" id="ctime" name="ctime"/><br><br>
+        <!-- <input type="button" value="Get a Call" id="button"  style="background-color: crimson;"> -->
+        <button>Get a call</button>
+        
+        </form>
+        <script>
+            function onsignup(event){
+                event.preventDefault();
+                console.log(event.target.fname.value)
+                console.log(event.target.mail.value)
+                console.log(event.target.phone.value)
+                console.log(event.target.ctime.value)
+            }
+        </script>
+</body>
+
+</html>
