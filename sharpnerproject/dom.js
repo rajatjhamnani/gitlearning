@@ -18,3 +18,10 @@ headerTitle.innerHTML="<b><i>Hello</i></b>"
 header.style.borderBottom='solid 3px #000'
 headerTitle.style.color='green'
 console.log(header)
+var items =document.getElementsByClassName("list-group-item")
+console.log(items)
+items[2].textContent="hello"
+items[2].style.backgroundColor="green"
+for(let i=0 ; i<items.length ; i++){
+    items[i].style.fontWeight="bold"
+}
