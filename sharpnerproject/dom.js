@@ -28,3 +28,24 @@ for(let i=0 ; i<items.length ; i++){
 var li =document.getElementsByTagName("li")
 
 li[0].style.backgroundColor="green"
+var input = document.querySelector("input")
+input.value="hello world "
+var submit =document.querySelector("input[type='submit']")
+submit.value='Send'
+var item=document.querySelector(".list-group-item")
+item.style.color='red'
+var seconditem=document.querySelector(".list-group-item:nth-child(2)")
+seconditem.style.backgroundColor="red"
+var thirditem=document.querySelector(".list-group-item:nth-child(3)")
+thirditem.style.backgroundColor="white"
+
+var titles=document.querySelectorAll('.title')
+titles[0].textContent='hello'
+var odd=document.querySelectorAll('li:nth-child(odd)')
+var even=document.querySelectorAll('li:nth-child(even)')
+
+for(let i=0 ; i<=odd.length ; i++){
+    
+    odd[i].style.backgroundColor="#f4f4f4"
+    even[i].style.backgroundColor="#ccc"
+}
