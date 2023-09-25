@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            background-color:wheat;
+            width: 80vh;
+            height: 50vh;
+            margin-left: 450px;
+            text-align: center;
+            border: 3px solid white;
+
+        }
+        input {
+            text-align:center;
+            font-size: 30px;
+            width: 500px;
+         }
+        label {
+            
+            font-size: 30px;
+        }   
+        button{
+            background-color: rgb(253, 160, 176);
+            width: 500px;
+            padding: 5px;
+        }     
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+    <form action="#" onsubmit="savetolocalstorage(event)">
+        <label for="name">Name </label><br>
+        <input type="text" , id="name" ,name="name" required/><br>
+        <label for="email">Email id</label><br>
+        <input type="email" , id="email" ,name="email" required/><br>
+        <label for="phone">Phone number </label><br>
+        <input type="tel" , id="phone" ,name="phone" required/><br>
+        <button>Submit</button>
+
+
+    </form>
+    <div/>
+    <script>
+        function savetolocalstorage(event){
+            event.preventDefault();
+            const name=event.target.name.value
+            const email=event.target.email.value
+            const phone=event.target.phone.value
+            localStorage.setItem('name', name)
+            localStorage.setItem('email', email)
+            localStorage.setItem('phone', phone)
+        }
+    </script>
+</body>
+</html>
