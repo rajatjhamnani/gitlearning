@@ -45,22 +45,32 @@
 
     </form>
     <div/>
+    <ul id="listofitems"></ul>
     <script>
         function savetolocalstorage(event){
             event.preventDefault();
             const name=event.target.name.value
             const email=event.target.email.value
             const phone=event.target.phone.value
-            localStorage.setItem('name', name)
-            localStorage.setItem('email', email)
-            localStorage.setItem('phone', phone)
+            // localStorage.setItem('name', name)
+            // localStorage.setItem('email', email)
+            // localStorage.setItem('phone', phone)
             const obj={
                 name,
                 email ,
                 phone
             }
-            localStorage.setItem("userdetails" ,JSON.stringify(obj))
-           }
+            localStorage.setItem(obj.email ,JSON.stringify(obj))
+            showUserOnScreen(obj)
+        }
+            function showUserOnScreen(obj){
+                const parentelement=document.getElementById('listofitems')
+                // const childelement=document.childelement('li')
+                parentelement.innerHTML=parentelement.innerHTML+`<li>${obj.name}-${obj.email}-${obj.phone}</li>`
+                //  childelement.textContent=obj.name+'-'+obj.email+'-'+obj.phone
+                //  parentelement.appendChild(childelement)
+            }
+          
     </script>
 </body>
 </html>
