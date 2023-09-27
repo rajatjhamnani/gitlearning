@@ -34,7 +34,7 @@
 <body>
     <div class="container">
     <form action="#" onsubmit="savetolocalstorage(event)">
-        <label for="name">Name </label><br>
+        <label for="name" >Name </label><br>
         <input type="text" , id="name" ,name="name" required/><br>
         <label for="email">Email id</label><br>
         <input type="email" , id="email" ,name="email" required/><br>
@@ -74,9 +74,23 @@
                 deletebutton.value='Delete'
                 deletebutton.onclick=()=>{
                     localStorage.removeItem(obj.email)
-                    parentelement.removeItem(childelement)
+                    parentelement.removeChild(childelement)
+                }
+                // childelement.appendChild(deletebutton)
+                // parentelement.appendChild(childelement)
+
+                const editbutton=document.createElement("input")
+                editbutton.type='button'
+                editbutton.value='Edit'
+                editbutton.onclick=()=>{
+                   localStorage.removeItem(obj.email)
+                   parentelement.removeChild(childelement)
+                   document.getElementById('name').value=obj.name;
+                   document.getElementById('email').value=obj.email;
+                   document.getElementById('phone').value=obj.phone;
                 }
                 childelement.appendChild(deletebutton)
+                childelement.appendChild(editbutton)
                 parentelement.appendChild(childelement)
             }
           
