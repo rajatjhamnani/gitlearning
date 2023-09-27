@@ -65,10 +65,19 @@
         }
             function showUserOnScreen(obj){
                 const parentelement=document.getElementById('listofitems')
-                // const childelement=document.childelement('li')
-                parentelement.innerHTML=parentelement.innerHTML+`<li>${obj.name}-${obj.email}-${obj.phone}</li>`
-                //  childelement.textContent=obj.name+'-'+obj.email+'-'+obj.phone
-                //  parentelement.appendChild(childelement)
+                const childelement=document.createElement('li')
+                //parentelement.innerHTML=parentelement.innerHTML+`<li>${obj.name}-${obj.email}-${obj.phone}</li>`
+                 childelement.textContent=obj.name+'-'+obj.email+'-'+obj.phone
+                 parentelement.appendChild(childelement)
+                const deletebutton = document.createElement('input')
+                deletebutton.type='button'
+                deletebutton.value='Delete'
+                deletebutton.onclick=()=>{
+                    localStorage.removeItem(obj.email)
+                    parentelement.removeItem(childelement)
+                }
+                childelement.appendChild(deletebutton)
+                parentelement.appendChild(childelement)
             }
           
     </script>
