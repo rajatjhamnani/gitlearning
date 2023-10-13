@@ -41,12 +41,24 @@ function deletePost(){
         },2000)
     })
 }
-function userupdatepost(){
-    Promise.all([createPost(),updateLastUserActivityTime(),'\n',createPost2(),updateLastUserActivityTime(),"\n",deletePost()])
-    .then(([x,y,u, z,t ,v,val])=>{
-    console.log(x,y, u,z, t,v,val)
-     })
-     .catch((err)=>console.log(err))
+// function userupdatepost(){
+//     Promise.all([createPost(),updateLastUserActivityTime(),'\n',createPost2(),updateLastUserActivityTime(),"\n",deletePost()])
+//     .then(([x,y,u, z,t ,v,val])=>{
+//     console.log(x,y, u,z, t,v,val)
+//      })
+//      .catch((err)=>console.log(err))
     
+// }
+// userupdatepost()
+async function userupdates(){
+    try{
+        await createPost().then((x)=>console.log(x))
+        await updateLastUserActivityTime().then((y)=>console.log(y))
+        await createPost2().then((z)=>console.log(z))
+        await updateLastUserActivityTime().then((t)=>console.log(t))
+        await deletePost().then((val)=>console.log(val))
+    } catch(err){
+        console.log(err)
+    }
 }
-userupdatepost()
+userupdates()
