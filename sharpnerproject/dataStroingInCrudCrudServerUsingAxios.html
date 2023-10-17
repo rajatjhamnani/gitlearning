@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            background-color:wheat;
+            width: 80vh;
+            height: 50vh;
+            margin-left: 450px;
+            text-align: center;
+            border: 3px solid white;
+
+        }
+        input {
+            text-align:center;
+            font-size: 30px;
+            width: 500px;
+         }
+        label {
+            
+            font-size: 30px;
+        }   
+        button{
+            background-color: rgb(253, 160, 176);
+            width: 500px;
+            padding: 5px;
+        }     
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+    <form action="#" onsubmit="savetolocalstorage(event)">
+        <label for="name" >Name </label><br>
+        <input type="text" , id="name" ,name="name" required/><br>
+        <label for="email">Email id</label><br>
+        <input type="email" , id="email" ,name="email" required/><br>
+        <label for="phone">Phone number </label><br>
+        <input type="tel" , id="phone" ,name="phone" required/><br>
+        <button>Submit</button>
+
+
+    </form>
+</div>
+    <ul id="listofitems"></ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+    <script>
+        function savetolocalstorage(event){
+            event.preventDefault();
+            const name=event.target.name.value
+            const email=event.target.email.value
+            const phone=event.target.phone.value
+            // localStorage.setItem('name', name)
+            // localStorage.setItem('email', email)
+            // localStorage.setItem('phone', phone)
+            const obj={
+                name,
+                email ,
+                phone
+            }
+            axios.post("https://crudcrud.com/api/0c078378826d42e3b6b142bd1a195b03/appointdata", obj)
+            .then((response)=>{
+                showUserOnScreen(response.data)
+                console.log(response)
+            })
+            .catch((err)=>{
+                document.body.innerHTML=document.body.innerHTML+"<h4>something went wrong</h4>"
+                console.log(err)
+            })
+            //localStorage.setItem(obj.email ,JSON.stringify(obj))
+           // showUserOnScreen(obj)
+        }
+            function showUserOnScreen(obj){
+                const parentelement=document.getElementById('listofitems')
+                const childelement=document.createElement('li')
+                //parentelement.innerHTML=parentelement.innerHTML+`<li>${obj.name}-${obj.email}-${obj.phone}</li>`
+                 childelement.textContent=obj.name+'-'+obj.email+'-'+obj.phone
+                 parentelement.appendChild(childelement)
+                const deletebutton = document.createElement('input')
+                deletebutton.type='button'
+                deletebutton.value='Delete'
+                deletebutton.onclick=()=>{
+                    localStorage.removeItem(obj.email)
+                    parentelement.removeChild(childelement)
+                }
+                // childelement.appendChild(deletebutton)
+                // parentelement.appendChild(childelement)
+
+                const editbutton=document.createElement("input")
+                editbutton.type='button'
+                editbutton.value='Edit'
+                editbutton.onclick=()=>{
+                   localStorage.removeItem(obj.email)
+                   parentelement.removeChild(childelement)
+                   document.getElementById('name').value=obj.name;
+                   document.getElementById('email').value=obj.email;
+                   document.getElementById('phone').value=obj.phone;
+                }
+                childelement.appendChild(deletebutton)
+                childelement.appendChild(editbutton)
+                parentelement.appendChild(childelement)
+            }
+          
+    </script>
+</body>
+</html>
