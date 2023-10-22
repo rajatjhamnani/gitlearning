@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <form class="form-check-inline" onsubmit="onsignup(event)">
+        <div class="container">
+            <label for="name" class="form-label"><h3>TODO name</h3></label>
+            <input type="text" id="name" name="name" class="form-control">
+            <label for="description" class="form-label"><h3>description</h3></label>
+            <input type="text" id="description" name="name" class="form-control">
+            <br>
+            <button>Add items</button>
+
+            <!-- <table>
+                <h1>TODO Remeaning</h1>
+                 <tr id="todorem"></tr>
+             </table> -->
+             <table>
+                <h1>TODO Done</h1>
+                 <tr id="tododone"></tr>
+             </table>
+
+        </div>
+    </form>
+    <ul id="details"></ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+    <script>
+        function onsignup(event){
+            event.preventDefault();
+            const todoName=event.target.name.value;
+            const description=event.target.description.value;
+
+            const obj={
+                todoName,
+                description
+            }
+            showtodosOnScreen(obj)
+            axios.post("https://crudcrud.com/api/fb774797d6b44f04abc54968402d01ce/tododata",obj)
+            .then((response)=>{
+                showtodosOnScreen(response.data)
+                console.log(response)
+            }).catch((err)=>{
+                document.body.innerHTML=document.body.innerHTML+"<h4>something went wrong</h4>"
+                console.log(err)
+            })
+        }
+
+        window.addEventListener("DOMContentLoaded",()=>{
+                axios.get("https://crudcrud.com/api/fb774797d6b44f04abc54968402d01ce/tododata")
+                .then((response)=>{
+                    console.log(response)
+                   for(var i=0 ; i<response.data.length ; i++){
+                        showtodosOnScreen(response.data[i])
+                    }
+                })
+                .catch((err)=>{
+                console.log(err)
+               })
+            })
+
+            function showtodosOnScreen(obj){
+                //const tododone=document.getElementById('tododone')
+                const parent=document.getElementById('details')
+                parent.innerHTML='<h1>todo remeaning</h1>'
+
+                const child=`<li id=${obj._id}> ${obj.todoName}-${obj.description}
+                          <button onclick=deleteuser('${obj._id}')>x</button>
+                          <button onclick=addtododone('${obj._id}')>click</button>
+                        </li>`
+
+                          parent.innerHTML+=child
+                          
+
+            }
+            function addtododone(userid){
+                const tododone=document.getElementById('tododone')
+                const childtobeadded=document.getElementById('userid')
+                tododone.innerHTML=tododone.innerHTML+childtobeadded
+
+                deleteuser(userid)
+             }
+
+            
+            function deleteuser(userid){
+                axios.delete(`https://crudcrud.com/api/fb774797d6b44f04abc54968402d01ce/tododata/${userid}`)
+                .then((response)=>{
+                    removeUserFromScreen(userid)
+                })
+                .catch((err)=>{
+                    console.log(err)
+                })
+             }
+               function removeUserFromScreen(userid){
+                parentNode=document.getElementById('details')
+                childnodetobedeleted=document.getElementById(userid)
+                if(childnodetobedeleted){
+                    parentNode.removeChild(childnodetobedeleted)
+                }
+               }
+
+
+
+        
+    </script>
+    
+</body>
+</html>
