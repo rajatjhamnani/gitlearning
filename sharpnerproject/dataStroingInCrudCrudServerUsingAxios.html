@@ -25,8 +25,8 @@
         }   
         button{
             background-color: rgb(253, 160, 176);
-            width: 500px;
-            padding: 5px;
+            width: 50px;
+            padding: 2px;
         }     
     
     </style>
@@ -63,7 +63,7 @@
                 email ,
                 phone
             }
-            axios.post("https://crudcrud.com/api/25cbe1c251d14b0b94b35824481b6c19/appointdata", obj)
+            axios.post("https://crudcrud.com/api/62978b1f830d4e0c9c0b28fb24590ebe/appointdata", obj)
             .then((response)=>{
                 showUserOnScreen(response.data)
                 console.log(response)
@@ -76,7 +76,7 @@
            // showUserOnScreen(obj)
         }
         window.addEventListener("DOMContentLoaded",()=>{
-         axios.get("https://crudcrud.com/api/25cbe1c251d14b0b94b35824481b6c19/appointdata")
+         axios.get("https://crudcrud.com/api/62978b1f830d4e0c9c0b28fb24590ebe/appointdata")
             .then((response)=>{
                 console.log(response)
 
@@ -99,7 +99,7 @@
             const parentNode=document.getElementById('listofitems');
             const childnode=`<li id=${obj._id}> ${obj.name} -${obj.email}-${obj.phone} 
                               <button onclick=deleteuser('${obj._id}')>Delete user</button>
-                              <button onclick=edituserdetails('${obj.name}','${obj.email}','${obj.phone}','${obj._id}')>Edit details</button> 
+                              <button onclick="edituserdetails('${obj.name}','${obj.email}','${obj.phone}','${obj._id}')">Edit details</button> 
                               </li> `
                               parentNode.innerHTML=parentNode.innerHTML+childnode
         }
@@ -121,7 +121,7 @@
 
 
              function deleteuser(userid){
-                axios.delete(`https://crudcrud.com/api/25cbe1c251d14b0b94b35824481b6c19/appointdata/${userid}`)
+                axios.delete(`https://crudcrud.com/api/62978b1f830d4e0c9c0b28fb24590ebe/appointdata/${userid}`)
                 .then((response)=>{
                     removeUserFromScreen(userid)
                 })
