@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" type="text/css" href="test2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My TODO List</h1>
+        <form action="#" onsubmit="onsignup(event)">
+            <label for="todo" class="form-label">Todo Name</label>
+            <input type="text" id="todo" name="todo" class="form-control" required>
+            <label for="description" class="form-label">Description</label>
+            <input type="text" id="description" name="description" class="form-control" required>
+            <button id="btn-sm">Add Items</button>
+        </form>
+     
+        <h1>Todo Remaining</h1>
+        <table>
+            <tbody id="todorem"></tbody>
+        </table>
+
+        <h1>Todo Done</h1>
+        <table>
+            <tbody id="tododone"></tbody>
+        </table>
+    
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"></script>
+        <script src="test2.js"></script>
+    </div>
+</body>
+</html>
